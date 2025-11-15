@@ -1,5 +1,3 @@
-# AWS-Cost-Anomaly-Detection-System-
-A serverless cost-monitoring and alerting system using AWS Lambda, Cost Explorer, S3, SNS, and Slack.
 # AWS Cost Anomaly Detection System  
 A fully serverless cloud cost monitoring system using **AWS Lambda**, **Cost Explorer**, **EventBridge**, **SNS**, **Slack**, and **S3**.
 
@@ -46,45 +44,45 @@ H --> I
 
 I --> J[End]
 🗂 Project Structure
+bash
+Copy code
 .
 ├── lambda_function.py      # Main Lambda function
 ├── README.md               # Documentation
 └── demo.md                 # Demo script for GitHub video
-
 🛠 Setup Instructions
 1️⃣ Enable AWS Cost Explorer
-
 AWS Console → Billing → Cost Explorer → Enable
 (It may take a few hours for cost data to appear.)
 
 2️⃣ Create an S3 Bucket
-
 Example name (must be globally unique):
 
+pgsql
+Copy code
 rasika-cost-reports-12345
-
-
 Folder structure:
 
+pgsql
+Copy code
 cost-reports/YYYY-MM-DD.json
-
 3️⃣ Create SNS Topic (Email Alerts)
-
 AWS Console → SNS → Topics → Create
 
 Name:
 
+pgsql
+Copy code
 cost-alerts-topic
-
-
 Subscribe your email and confirm the email link.
 
 4️⃣ Create IAM Role for Lambda
 Attach managed policy:
-
 AWSLambdaBasicExecutionRole
 
 Add inline policy (update with YOUR S3 bucket & SNS ARN):
+json
+Copy code
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -121,9 +119,7 @@ Add inline policy (update with YOUR S3 bucket & SNS ARN):
     }
   ]
 }
-
 5️⃣ Create Lambda Function
-
 AWS Console → Lambda → Create Function
 
 Name: cost-anomaly-detector
@@ -143,20 +139,19 @@ LOOKBACK_DAYS	30
 WINDOW_DAYS	7
 Z_THRESHOLD	2.0
 PCT_THRESHOLD	0.5
-7️⃣ Create EventBridge Rule (Scheduler)
 
+7️⃣ Create EventBridge Rule (Scheduler)
 AWS Console → EventBridge → Rules → Create Rule
 
 Choose schedule:
 
+scss
+Copy code
 cron(0 6 * * ? *)
-
-
 This runs the Lambda every day at 06:00 UTC.
 
 🧪 Testing
 ✔ Manual Test (Recommended)
-
 Lambda Console → Test → Create test event → Run
 Check:
 
@@ -169,22 +164,24 @@ Slack message
 SNS email
 
 ✔ Force Alert Test
-
 Set thresholds:
 
+ini
+Copy code
 Z_THRESHOLD = 0.1
 PCT_THRESHOLD = 0.0001
-
-
 This ensures an alert fires instantly.
 
 📤 Output Examples
 Example Slack Message:
+pgsql
+Copy code
 [COST ALERT] Anomaly detected for 2025-11-13: $4.23
 Reasons: pct increase >= 50%
 Report saved to S3.
-
 Example S3 Report:
+json
+Copy code
 {
   "generated_at": "2025-11-14T05:23:33Z",
   "yesterday": {
@@ -198,13 +195,10 @@ Example S3 Report:
   "z_score": 3.12,
   "pct_increase": 2.34
 }
-
 🎥 Demo Script
-
 See demo.md for a video walkthrough script.
 
 🧠 Skills Demonstrated
-
 AWS Lambda
 
 AWS S3
@@ -224,9 +218,7 @@ Serverless automation
 Cloud monitoring & alerting
 
 📄 License
-
 MIT License
 
 ⭐ Author
-
 Rasika
