@@ -43,7 +43,10 @@ G --> I
 H --> I
 
 I --> J[End]
-Setup Instructions
+
+---
+
+## 🛠 Setup Instructions
 1) Enable AWS Cost Explorer
 
 AWS Console → Billing → Cost Explorer → Enable
