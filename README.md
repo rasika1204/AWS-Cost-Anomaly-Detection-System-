@@ -43,7 +43,6 @@ G --> I
 H --> I
 
 I --> J[End]
-
 🛠 Setup Instructions
 1) Enable AWS Cost Explorer
 
