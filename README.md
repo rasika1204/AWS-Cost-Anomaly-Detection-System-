@@ -19,7 +19,7 @@ This project analyzes daily AWS cost, detects unusual spikes using anomaly detec
 
 ---
 
-# 🏗 Architecture Diagram
+## 🏗 Architecture Diagram
 
 ```mermaid
 flowchart TD
@@ -43,6 +43,7 @@ G --> I
 H --> I
 
 I --> J[End]
+
 🗂 Project Structure
 bash
 Copy code
