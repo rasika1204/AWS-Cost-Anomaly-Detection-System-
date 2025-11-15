@@ -43,9 +43,6 @@ G --> I
 H --> I
 
 I --> J[End]
-
-
-
 Project Structure
 .
 ├── lambda_function.py      # Main Lambda function
